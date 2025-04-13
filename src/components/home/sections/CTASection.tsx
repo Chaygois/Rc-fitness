@@ -7,8 +7,7 @@ export const CTASection = () => {
         <Link
           to="/registro"
           className="mfp-button-accent text-lg font-bold py-4 px-8 uppercase tracking-wider"
-        >
-          Inicie agora mesmo sua jornada
+        >Inicie agora mesmo sua jornada
         </Link>
       </div>
     </div>

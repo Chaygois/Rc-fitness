@@ -17,7 +17,7 @@ export const HeroSection = () => {
               to="/registro"
               className="w-full md:w-auto flex justify-center py-3 px-8 mfp-button-primary text-lg rounded-md" 
             >
-              Comece gratuitamente
+              Comece agora gratuitamente
             </Link>
           </div>
         </div>
