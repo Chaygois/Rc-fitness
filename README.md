@@ -1,6 +1,5 @@
-## Front-end
 
-O front-end desta aplicação é construído utilizando [React](https://react.dev/) ou [Vue](https://vuejs.org/) (dependendo da sua escolha), uma biblioteca/framework JavaScript moderna e eficiente para a criação de interfaces de usuário dinâmicas e interativas.
+O front-end desta aplicação é construído utilizando [React](https://react.dev/), uma biblioteca JavaScript popular para a criação de interfaces de usuário dinâmicas e interativas, e [Vite](https://vitejs.dev/), um construtor de frontend rápido e moderno que oferece uma excelente experiência de desenvolvimento. A estilização da aplicação é feita com [Tailwind CSS](https://tailwindcss.com/), um framework CSS utilitário que permite construir interfaces personalizadas de forma rápida e eficiente diretamente no HTML, complementado por [tailwindcss-animate](https://tailwindcss.com/docs/animation) para adicionar animações suaves. Ícones vetoriais são facilmente integrados usando a biblioteca [lucide-react](https://lucide.dev/). O roteamento da aplicação é gerenciado por [react-router-dom](https://reactrouter.com/en/main).
 
 ### Funcionalidades da Interface do Usuário
 
@@ -23,22 +22,26 @@ O front-end oferece as seguintes funcionalidades para os usuários:
 
 ### Tecnologias Específicas do Front-end
 
-Além do framework principal ([React](https://react.dev/) ou [Vue](https://vuejs.org/)), o front-end utiliza as seguintes tecnologias:
-
-* **Gerenciamento de Estado:** [Redux](https://redux.js.org/) ou [Context API](https://react.dev/learn/passing-data-deeply-with-context) (se estiver usando React) / [Vuex](https://vuex.vuejs.org/) ou [Pinia](https://pinia.vuejs.org/) (se estiver usando Vue) para gerenciar o estado da aplicação de forma eficiente.
-* **Roteamento:** [React Router DOM](https://reactrouter.com/en/main) (para React) / [Vue Router](https://router.vuejs.org/) (para Vue) para navegação entre as diferentes páginas e funcionalidades da aplicação.
-* **Estilização:** [Tailwind CSS](https://tailwindcss.com/) (mencionado anteriormente, para estilização rápida e responsiva) ou outra biblioteca/framework de CSS de sua preferência.
-* **Componentes de Interface:** Possivelmente bibliotecas de componentes UI como [Material UI](https://mui.com/) ou [Ant Design](https://ant.design/) (se você as utilizou).
-* **Ícones:** [Lucide React](https://lucide.dev/) (pelo uso de `Eye` e `EyeOff` no código de registro).
-* **Comunicação com a API:** `fetch` API ou bibliotecas como [Axios](https://axios-http.com/ptbr/docs/intro) para fazer requisições HTTP para o backend.
+* **Framework:** [React](https://react.dev/) para a estrutura e a lógica da interface do usuário.
+* **Construtor de Módulos:** [Vite](https://vitejs.dev/) para um desenvolvimento rápido e eficiente, com hot module replacement (HMR) instantâneo.
+* **Estilização:** [Tailwind CSS](https://tailwindcss.com/) para estilização utilitária, permitindo a criação de designs complexos diretamente nas classes HTML, com animações utilizando [tailwindcss-animate](https://tailwindcss.com/docs/animation).
+* **Gerenciamento de Estado:** [Redux](https://redux.js.org/) ou [Context API](https://react.dev/learn/passing-data-deeply-with-context) para gerenciar o estado da aplicação de forma eficiente (a escolha dependerá da implementação).
+* **Roteamento:** [React Router DOM](https://reactrouter.com/en/main) para navegação entre as diferentes páginas e funcionalidades da aplicação.
+* **Ícones:** [lucide-react](https://lucide.dev/) para a utilização de ícones vetoriais de forma fácil em componentes React.
+* **Comunicação com a API:** `fetch` API ou bibliotecas como [Axios](https://axios-http.com/ptbr/docs/intro) para realizar requisições HTTP para o backend.
 * **Testes:** [Cypress](https://www.cypress.io/) para testes end-to-end, simulando a interação do usuário com a interface.
+* **Formatação e Linting:** [Biome](https://biomejs.dev/) para linting e formatação de código, garantindo a consistência do estilo.
+* **TypeScript:** [TypeScript](https://www.typescriptlang.org/) para adicionar tipagem estática ao JavaScript, melhorando a manutenção e prevenindo erros.
 
 ### Como Rodar o Front-end Localmente
 
-(Esta parte já foi coberta na seção "Como Rodar o Projeto", mas você pode referenciá-la aqui para maior clareza).
-
 1.  Navegue para o diretório do frontend (`cd frontend`).
 2.  Instale as dependências (`npm install` ou `yarn install`).
-3.  Configure as variáveis de ambiente (especialmente a URL da API backend).
-4.  Inicie o servidor de desenvolvimento (`npm start` ou `yarn serve`).
+3.  Configure as variáveis de ambiente (especialmente a URL da API backend, geralmente no arquivo `.env.local` ou similar).
+4.  Inicie o servidor de desenvolvimento utilizando o script `dev` definido no `package.json`:
 
+    ```bash
+    npm run dev
+    # ou
+    yarn dev
+    ```
