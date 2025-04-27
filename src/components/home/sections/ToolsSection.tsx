@@ -1,3 +1,4 @@
+import image from '../../assets/front2.png';
 export const ToolsSection = () => {
   return (
     <div className="bg-mfp-background py-16">
@@ -9,6 +10,13 @@ export const ToolsSection = () => {
         <p className="text-lg text-center text-mfp-gray mb-12 max-w-2xl mx-auto">
           Está tentando perder peso, tonificar o corpo, organizar sua dieta? Nós fornecemos os recursos certos para chegar lá.
         </p>
+        <div className="flex flex-col md:flex-row items-center">
+        <img
+          src={image}
+          alt="prato"
+          className="w-full object-cover mb-12"
+        />
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Feature 1 */}

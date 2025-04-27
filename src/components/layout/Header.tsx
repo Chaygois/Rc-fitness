@@ -1,8 +1,9 @@
+//Header.tsx
 import { Link } from 'react-router-dom';
 
 export const Header = () => {
   return (
-<header className="w-full max-w-screen-lg mx-auto"> {/* Adicionei max-w e mx-auto */}
+<header className="relative z-50 w-full max-w-screen-lg mx-auto">
   <div className="flex justify-between items-center py-5 px-8">
     <Link to="/" className="text-3xl font-bold text-mfp-blue">
       RCFITNESS
@@ -17,8 +18,8 @@ export const Header = () => {
       </Link>
     </div>
   </div>
-      {/* Navegação secundária */}
-      </header>
+</header>
+
   );
 };
 

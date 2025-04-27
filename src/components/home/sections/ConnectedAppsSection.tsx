@@ -11,7 +11,7 @@ export const ConnectedAppsSection = () => {
         Salve suas receitas favoritas, avalie as que mais gosta e construa sua própria coleção personalizada para um planejamento alimentar prático e delicioso. O foco é ter suas receitas ao seu alcance para você se sentir melhor e cozinhar com mais prazer.        </p>
 
         <div className="flex justify-center">
-          <div className="w-full max-w-2xl relative">
+          <div className="w-full object-cover mb-12">
             <img
               src={front}
               alt="front"

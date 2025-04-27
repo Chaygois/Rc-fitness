@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <footer className="bg-white py-10 mt-12 border-t border-gray-200">
       <div className="container mx-auto px-4">
-        <ul className="flex flex-wrap gap-y-3 justify-center">
+        {/* <ul className="flex flex-wrap gap-y-3 justify-center">
           <li className="mx-3">
             <Link to="/" className="text-mfp-gray hover:text-mfp-blue">
               Contador de calorias
@@ -83,7 +83,7 @@ export const Footer = () => {
             <option value="zh-CN">中文(简体)</option>
             <option value="zh-TW">中文(台灣)</option>
           </select>
-        </div>
+        </div> */}
 
         <div className="mt-4 text-center">
           <p className="text-mfp-gray">© 2025 Rc-Fitness, Inc.</p>

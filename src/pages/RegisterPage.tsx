@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
+import { signInWithGoogle } from "../firebasee/firebase"; // Certo
+import api from '../api'; 
+
 
 export const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,10 +15,33 @@ export const RegisterPage = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui seria implementada a lógica de registro
-    console.log('Registro com:', { name, email, password });
+    try {
+      const response = await api.post('/register', {
+        name,
+        email,
+        password
+      });
+
+      console.log('Usuário registrado com sucesso:', response.data);
+    } catch (error: any) {
+      if (error.response) {
+        console.error('Erro ao registrar:', error.response.data);
+      } else {
+        console.error('Erro inesperado:', error.message);
+      }
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const user = await signInWithGoogle();
+      console.log('Usuário autenticado:', user);
+      // Redirecionamento ou outra lógica aqui
+    } catch (error) {
+      console.error('Erro ao tentar fazer login com o Google:', error);
+    }
   };
 
   return (
@@ -29,32 +55,28 @@ export const RegisterPage = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Campo de nome */}
           <div className="space-y-2">
-            <div className="relative">
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Nome"
-                className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-mfp-blue focus:border-transparent"
-                required
-              />
-            </div>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Nome"
+              className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-mfp-blue focus:border-transparent"
+              required
+            />
           </div>
 
           {/* Campo de email */}
           <div className="space-y-2">
-            <div className="relative">
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Endereço de e-mail"
-                className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-mfp-blue focus:border-transparent"
-                required
-              />
-            </div>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Endereço de e-mail"
+              className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-mfp-blue focus:border-transparent"
+              required
+            />
           </div>
 
           {/* Campo de senha */}
@@ -65,7 +87,7 @@ export const RegisterPage = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Criar uma senha"
+                placeholder="Senha"
                 className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-mfp-blue focus:border-transparent pr-10"
                 required
               />
@@ -82,12 +104,12 @@ export const RegisterPage = () => {
                 )}
               </button>
             </div>
-            <p className="text-xs text-mfp-gray">
+            <p className="text-xs text-mfp-gray mt-1">
               Deve ter pelo menos 8 caracteres, incluindo uma letra e um número ou caractere especial
             </p>
           </div>
 
-          {/* Botão de registro e opções de registro social */}
+          {/* Botões */}
           <div className="space-y-4">
             <button
               type="submit"
@@ -100,36 +122,44 @@ export const RegisterPage = () => {
 
             <button
               type="button"
+              onClick={handleGoogleSignIn}
               className="w-full bg-white text-gray-700 font-semibold py-3 px-4 border border-gray-300 rounded-md flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors"
             >
-              <svg width="20" height="20" viewBox="0 0 20 20" className="text-red-500">
-                <path
-                  d="M10 0C4.477 0 0 4.477 0 10C0 15.523 4.477 20 10 20C15.523 20 20 15.523 20 10C20 4.477 15.523 0 10 0ZM14.8 10.5H10.5V14.8C10.5 15.073 10.273 15.3 10 15.3C9.727 15.3 9.5 15.073 9.5 14.8V10.5H5.2C4.927 10.5 4.7 10.273 4.7 10C4.7 9.727 4.927 9.5 5.2 9.5H9.5V5.2C9.5 4.927 9.727 4.7 10 4.7C10.273 4.7 10.5 4.927 10.5 5.2V9.5H14.8C15.073 9.5 15.3 9.727 15.3 10C15.3 10.273 15.073 10.5 14.8 10.5Z"
-                  fill="currentColor"
-                />
+              <svg
+                aria-hidden="true"
+                role="graphics-symbol"
+                viewBox="0 0 20 20"
+                className="googleLogo"
+                style={{ width: '16px', height: '16px', display: 'block', fill: 'inherit', flexShrink: 0 }}
+              >
+                <g>
+                  <path
+                    d="M19.9996 10.2297C19.9996 9.54995 19.9434 8.8665 19.8234 8.19775H10.2002V12.0486H15.711C15.4823 13.2905 14.7475 14.3892 13.6716 15.0873V17.586H16.9593C18.89 15.8443 19.9996 13.2722 19.9996 10.2297Z"
+                    fill="#4285F4"
+                  ></path>
+                  <path
+                    d="M10.2002 20.0003C12.9518 20.0003 15.2723 19.1147 16.963 17.5862L13.6753 15.0875C12.7606 15.6975 11.5797 16.0429 10.2039 16.0429C7.54224 16.0429 5.28544 14.2828 4.4757 11.9165H1.08301V14.4923C2.81497 17.8691 6.34261 20.0003 10.2002 20.0003Z"
+                    fill="#34A853"
+                  ></path>
+                  <path
+                    d="M4.47227 11.9163C4.04491 10.6743 4.04491 9.32947 4.47227 8.0875V5.51172H1.08333C-0.363715 8.33737 -0.363715 11.6664 1.08333 14.4921L4.47227 11.9163Z"
+                    fill="#FBBC04"
+                  ></path>
+                  <path
+                    d="M10.2002 3.95756C11.6547 3.93552 13.0605 4.47198 14.1139 5.45674L17.0268 2.60169C15.1824 0.904099 12.7344 -0.0292099 10.2002 0.000185607C6.34261 0.000185607 2.81497 2.13136 1.08301 5.51185L4.47195 8.08764C5.27795 5.71762 7.53849 3.95756 10.2002 3.95756Z"
+                    fill="#EA4335"
+                  ></path>
+                </g>
               </svg>
               Continuar com o Google
             </button>
-
-            <button
-              type="button"
-              className="w-full bg-[#3b5998] text-white font-semibold py-3 px-4 rounded-md flex items-center justify-center gap-2 hover:bg-[#324b81] transition-colors"
-            >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="white">
-                <path
-                  d="M18.8958 0H1.10417C0.494167 0 0 0.494167 0 1.10417V18.8967C0 19.5058 0.494167 20 1.10417 20H10.6833V12.255H8.07667V9.23667H10.6833V7.01083C10.6833 4.4275 12.2608 3.02083 14.5658 3.02083C15.67 3.02083 16.6183 3.10333 16.895 3.14V5.84L15.2967 5.84083C14.0433 5.84083 13.8008 6.43667 13.8008 7.31V9.2375H16.79L16.4008 12.2558H13.8008V20H18.8975C19.5058 20 20 19.5058 20 18.8958V1.10417C20 0.494167 19.5058 0 18.8958 0Z"
-                  fill="currentColor"
-                />
-              </svg>
-              Continuar com o Facebook
-            </button>
           </div>
         </form>
-      </div>
 
-      <p className="text-center mt-6 text-mfp-gray text-sm">
-        Já é membro? <Link to="/login" className="text-mfp-blue">Faça login</Link>
-      </p>
+        <p className="text-center mt-6 text-mfp-gray text-sm">
+          Já é membro? <Link to="/login" className="text-mfp-blue">Faça login</Link>
+        </p>
+      </div>
     </div>
   );
 };
