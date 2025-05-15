@@ -1,3 +1,8 @@
+![Screenshot_1](https://github.com/user-attachments/assets/66e66d23-e0f6-471d-b480-e3210ca9eddf)
+![Screenshot_2](https://github.com/user-attachments/assets/e9190678-a461-4e65-a517-7ce3fc863613)
+![Screenshot_6](https://github.com/user-attachments/assets/4d294fc2-01c0-4091-b14b-3430bdcc98ee)
+![Screenshot_5](https://github.com/user-attachments/assets/c2673cf2-55f9-4cfd-b602-154c5d699cc8)
+![Screenshot_4](https://github.com/user-attachments/assets/2524de86-8149-4345-a952-80e231365c40)
 
 O front-end desta aplicação é construído utilizando [React](https://react.dev/), uma biblioteca JavaScript popular para a criação de interfaces de usuário dinâmicas e interativas, e [Vite](https://vitejs.dev/), um construtor de frontend rápido e moderno que oferece uma excelente experiência de desenvolvimento. A estilização da aplicação é feita com [Tailwind CSS](https://tailwindcss.com/), um framework CSS utilitário que permite construir interfaces personalizadas de forma rápida e eficiente diretamente no HTML, complementado por [tailwindcss-animate](https://tailwindcss.com/docs/animation) para adicionar animações suaves. Ícones vetoriais são facilmente integrados usando a biblioteca [lucide-react](https://lucide.dev/). O roteamento da aplicação é gerenciado por [react-router-dom](https://reactrouter.com/en/main).
 
